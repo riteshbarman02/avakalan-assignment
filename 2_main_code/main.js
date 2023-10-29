@@ -4,10 +4,10 @@ import Graph from "../1_workshop/1_custom_line/js/graph.js";
 
 
 var ob2 = document.getElementById("canvas_1");
-
 var sfy = 150;
 var bmy = 360;
 var slider_y = 490;
+
 
 
 // Create a Two.js instance
@@ -19,13 +19,13 @@ var two = new Two({
 
 var ax = 250;
 
-var domian = new eigenLine(two, 50, 30, 450, 30, 4, "black");
+var domian = new eigenLine(two, 60, 30, 440, 30, 4, "black");
 var load = new eigenLine(two, ax, 5, ax, 25, 4, "black", "arrow", false, false);
 
 //Upper blue rectangle inital
 var points1 = [
-  new Two.Anchor(50, sfy),
-  new Two.Anchor(50, sfy-70),
+  new Two.Anchor(60, sfy),
+  new Two.Anchor(60, sfy-70),
   new Two.Anchor(ax, sfy-70),
   new Two.Anchor(ax, sfy),
 ];
@@ -33,14 +33,14 @@ var points1 = [
 var points2 = [
   new Two.Anchor(ax, sfy),
   new Two.Anchor(ax, sfy+70),
-  new Two.Anchor(450, sfy+70),
-  new Two.Anchor(450, sfy),
+  new Two.Anchor(440, sfy+70),
+  new Two.Anchor(440, sfy),
 ];
 //third triangular reason
 var points3 = [
-    new Two.Anchor(50, bmy),
+    new Two.Anchor(60, bmy),
     new Two.Anchor(ax, bmy-50),
-    new Two.Anchor(450, bmy),
+    new Two.Anchor(440, bmy),
   ];
 
 // Create a new instance of the Graph class
@@ -48,14 +48,39 @@ var graph1 = new Graph(two, points1, "#276BB0", "#276BB0", 0.5, 4);
 var graph2 = new Graph(two, points2, "#C2185B", "#C2185B", 0.5, 4);
 var graph3 = new Graph(two, points3, "#C2185B", "#C2185B", 0.5, 4);
 
-var slider = new eigenLine(two,50, slider_y, 450, slider_y, 4, "black");
+var slider = new eigenLine(two,60, slider_y, 440, slider_y, 4, "black");
 // slider.draw(two);
 
 var mouse = new Two.Vector();
 var yaxis = two.makeLine(250, 30, 250, slider_y);
 yaxis.linewidth = 4;
+yaxis.dashes = [20,10];
 yaxis.noFill();
 yaxis.stroke = "#0000002E";
+
+var yaxis1 = two.makeLine(60, 30, 60, slider_y);
+yaxis1.linewidth = 4;
+yaxis1.dashes = [20,10];
+yaxis1.noFill();
+yaxis1.stroke = "#0000002E";
+
+var yaxis2 = two.makeLine(440, 30, 440, slider_y);
+yaxis2.linewidth = 4;
+yaxis2.dashes = [20,10];
+yaxis2.noFill();
+yaxis2.stroke = "#0000002E";
+
+//add text
+var xlabel1 = two.makeText("Bending Moment", 25, 150);
+xlabel1.rotation = -Math.PI/2;
+var xlabel3= two.makeText("Shear Force",25,350);
+xlabel3.rotation=-Math.PI/2;
+var pos = two.makeText("x",250,50);
+pos.size = 40;
+
+
+two.add(xlabel1);
+
 
 // Create a circle
 var circle = two.makeCircle(250, slider_y, 10);
@@ -67,27 +92,33 @@ circle.stroke = "#000000";
 circle.linewidth = 3;
 
 // Create a new instance of the Line class
-var sf_y_axis = new eigenLine(two,50, sfy-100, 50, sfy+100, 4, "black");
-var sf_x_axis = new eigenLine(two,50, sfy, 450, sfy, 4, "black");
+var sf_y_axis = new eigenLine(two,40, sfy-80, 40, sfy+80, 4, "black");
+var sf_x_axis = new eigenLine(two,60, sfy, 440, sfy, 4, "black");
 
 
 // Create a new instance of the Line class
-var bm_y_axis = new eigenLine(two,50, bmy-100, 50, bmy+100, 4, "black");
-var bm_x_axis = new eigenLine(two,50, bmy, 450, bmy, 4, "black");
+var bm_y_axis = new eigenLine(two,40, bmy-80, 40, bmy+80, 4, "black");
+var bm_x_axis = new eigenLine(two,60, bmy, 440, bmy, 4, "black");
 
-
-// Render the Two.js instance
 two.update();
+
+
+//add text in canvas
+
 // slider 
-ob2.addEventListener("pointermove", pointermove , false);
+ob2.addEventListener("pointerdown",pointerdown);
+function pointerdown (e) {
+   ob2.addEventListener("pointermove", pointermove );
+   ob2.addEventListener("pointerup", pointerup);
+}
 
 function pointermove(e) {
   mouse.x = e.clientX - getOffset(ob2).left;
-  mouse.y = e.clientY - getOffset(ob2).top;
-  console.log(mouse.x, mouse.y);
 
-  mouse.x = Math.min(mouse.x, 450);
-  mouse.x = Math.max(mouse.x, 50);
+  mouse.x = Math.min(mouse.x, 440);
+  mouse.x = Math.max(mouse.x, 60);
+  
+  pos.translation.set(mouse.x,50);
 
   yaxis.translation.set(mouse.x - 250, 0);
   circle.translation.set(mouse.x, slider_y);
@@ -101,31 +132,13 @@ function pointermove(e) {
   points2[1].x = ax;
 
   points3[1].x = ax;
-  load.update(two,ax,ax);
-
-  // Update the rendering
-  graph1.update(points1);
-  graph2.update(points2);
-  graph3.update(points3);
-
-  two.update();// update the renderer
+  load.update(ax);
 }
-// Add a resize event listener to the window object
-window.addEventListener('resize', resize);
 
-// Resize function
-function resize() {
- // Calculate the new width and height of the graph
- var newWidth = window.innerWidth;
- var newHeight = window.innerHeight;
-
-  // Update the width and height of the Two.js instance
-  two.width = newWidth;
-  two.height = newHeight;
- 
- // Render the Two.js instance
- two.update();
+function pointerup(e){
+  ob2.removeEventListener('pointermove', pointermove);
 }
+
 
 function getOffset(el) {
   const rect = el.getBoundingClientRect();

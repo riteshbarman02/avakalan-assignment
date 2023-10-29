@@ -9,7 +9,7 @@ var slider_y = 490;
 
 // Create a Two.js instance
 var two = new Two({
-  fullscreen: false,
+  fullscreen: true,
   //   width: 640,
   height: 800,
   //   fitted: true,
@@ -20,7 +20,7 @@ var ax = 250;
 var domian = new eigenLine(two, 60, 30, 440, 30, 4, "black");
 var load = new eigenLine(two, ax, 5, ax, 25, 4, "black", "arrow", false, false);
 
-// domian.draw(two);
+//domian.draw(two);
 // load.draw(two)
 // Define the points for the line
 
@@ -46,8 +46,8 @@ var points3 = [
 
 // Create a new instance of the Graph class
 var graph1 = new Graph(two, points1, "#276BB0", "#276BB0", 0.5, 4);
-var graph2 = new Graph(two, points2, "#C2185B", "#C2185B", 0.5, 4);
-var graph3 = new Graph(two, points3, "#C2185B", "#C2185B", 0.5, 4);
+var graph2 = new Graph(two, points2, "#C218B", "#C2185B", 0.5, 4);
+var graph3 = new Graph(two, points3, "#C218B", "#C2185B", 0.5, 4);
 
 var slider = new eigenLine(two,50, slider_y, 450, slider_y, 4, "black");
 // slider.draw(two);

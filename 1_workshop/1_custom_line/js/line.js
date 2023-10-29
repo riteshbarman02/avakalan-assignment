@@ -1,6 +1,7 @@
 // line.js
 export default class eigenLine {
-  constructor(two, x1, y1, x2, y2, lineWidth, color, lineEndsType="bar",startLineEnd=true,endLineEnd=true) {
+  constructor(two, x1, y1, x2, y2, lineWidth, color, lineEndsType="bar",startLineEnd=true,endLineEnd=true)
+   {
 
     this.two = two;
 
@@ -22,7 +23,7 @@ export default class eigenLine {
     this.line.opacity = 1;
 
     // Create a new instance of the eigenLineEnds class
-    this.lineEnds = new eigenLineEnds(this.x1, this.y1, this.x2, this.y2, this.lineWidth, this.color,this.startLineEnd,this.endLineEnd);
+   this.lineEnds = new eigenLineEnds(this.x1, this.y1, this.x2, this.y2, this.lineWidth, this.color,this.startLineEnd,this.endLineEnd);
 
     // Draw the line ends
     // lineEnds.draw_arrow(two);
@@ -34,8 +35,8 @@ export default class eigenLine {
     }
 
     this.two.update();
+ }
 
-  }
 
   update(two,x1,x2){
     this.line.vertices[0].x=x1;
@@ -85,16 +86,16 @@ class eigenLineEnds {
     var bar2_y2 = this.y2 + barLength * Math.sin(angle);
   
     // Create bars at the starting and ending points
-    var bar1, bar2;
+    var bar;
     if (this.startLineEnd) {
-      bar1 = two.makeLine(bar1_x1, bar1_y1, bar1_x2, bar1_y2);
-      bar1.linewidth = this.lineWidth; // Bar width
-      bar1.stroke = this.color; // Bar color
+      bar = two.makeLine(bar1_x1, bar1_y1, bar1_x2, bar1_y2);
+      bar.linewidth = this.lineWidth; // Bar width
+      bar.stroke = this.color; // Bar color
     }
     if (this.endLineEnd) {
-      bar2 = two.makeLine(bar2_x1, bar2_y1, bar2_x2, bar2_y2);
-      bar2.linewidth = this.lineWidth; // Bar width
-      bar2.stroke = this.color; // Bar color
+      bar = two.makeLine(bar2_x1, bar2_y1, bar2_x2, bar2_y2);
+      bar.linewidth = this.lineWidth; // Bar width
+      bar.stroke = this.color; // Bar color
     }
   }
 
@@ -122,8 +123,8 @@ class eigenLineEnds {
   
    
     // Create arrows at the starting and ending points
+    var bar1, bar2;
     if (this.startLineEnd) {
-      var bar1, bar2;
       bar1 = two.makeLine(arrow1_x1, arrow1_y1, arrow1_x2, arrow1_y2);
       bar2 = two.makeLine(arrow1_x3, arrow1_y3, this.x1, this.y1);
       bar1.linewidth = this.lineWidth; // Bar width
@@ -132,14 +133,13 @@ class eigenLineEnds {
       bar2.stroke = this.color; // Bar color
     }
     if (this.endLineEnd) {
-      var bar3, bar4;
-      bar3 = two.makeLine(arrow2_x1, arrow2_y1, arrow2_x2, arrow2_y2);
-      bar4 = two.makeLine(arrow2_x3, arrow2_y3, this.x2, this.y2);
+      bar1 = two.makeLine(arrow2_x1, arrow2_y1, arrow2_x2, arrow2_y2);
+      bar2 = two.makeLine(arrow2_x3, arrow2_y3, this.x2, this.y2);
 
-      bar3.linewidth = this.lineWidth; // Bar width
-      bar3.stroke = this.color; // Bar color
-      bar4.linewidth = this.lineWidth; // Bar width
-      bar4.stroke = this.color; // Bar color
+      bar1.linewidth = this.lineWidth; // Bar width
+      bar1.stroke = this.color; // Bar color
+      bar2.linewidth = this.lineWidth; // Bar width
+      bar2.stroke = this.color; // Bar color
     }
   }
 }
