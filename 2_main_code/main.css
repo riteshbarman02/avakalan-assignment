@@ -5,33 +5,22 @@ body {
 }
 
 .container {
-    margin: auto;
-    width: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100vw;
 }
-
-.column {
-    padding: 20px;
-    text-align: center;
-}
-
 
 .myCanvas {
-    margin: auto;
-    /* width: 500px; */
-    height: 70vh;
-    width: 500px;
-    border-radius: 8px;
-    border: 5px solid #f4f4f4 ;
-    background-color: #f4f6ff;
-    border-width: 2px;
-    /* border-color: #505b61; */
-    /* box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22); */
     cursor: pointer;
     transition: 0.4s;
-    /* background-color: #06090c4a; */
+    width: 100vw;
     overflow: hidden;
-    /* this fixes the overflow:hidden in Chrome/Opera */
+    }
+@media  (max-width: 600px) {
+   .container{
+    width: 80vw;
+    margin-left: -15px;
+   }
+   .myCanvas{
+    width: 100vw;
+    height: 70vh;
+   }
 }

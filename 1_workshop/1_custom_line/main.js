@@ -10,9 +10,7 @@ var slider_y = 490;
 // Create a Two.js instance
 var two = new Two({
   fullscreen: true,
-  //   width: 640,
-  height: 800,
-  //   fitted: true,
+  fitted: true,
 }).appendTo(ob2);
 
 var ax = 250;
@@ -91,7 +89,6 @@ ob2.addEventListener("pointermove", pointermove, false);
 function pointermove(e) {
   mouse.x = e.clientX - getOffset(ob2).left;
   mouse.y = e.clientY - getOffset(ob2).top;
-  console.log(mouse.x, mouse.y);
 
   mouse.x = Math.min(mouse.x, 440);
   mouse.x = Math.max(mouse.x, 60);
@@ -114,13 +111,7 @@ function pointermove(e) {
 
   points3[1].x = ax;
 
-  // load.translation.set(mouse.x - 250, 0);
-  load.update(two,ax,ax);
-
   // Update the rendering
-  graph1.update(points1);
-  graph2.update(points2);
-  graph3.update(points3);
   //    curveFill.vertices = points;
   //    curvePath.vertices = points;
 
