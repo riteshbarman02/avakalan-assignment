@@ -3,14 +3,13 @@ Interactive Two.js Graph with Perpendicular Bar Ends
 
 This project showcases an interactive graph using the Two.js library, allowing users to manipulate lines and shapes with perpendicular bar ends. The graph represents bending moments, shear forces, and a triangular region.
 
-Table of Contents
-Installation
-Usage
-Responsive Design
-Touch Events
-Contributing
-License
-Preview
+Table of Contents<br>
+Installation<br>
+Usage<br>
+Responsive Design<br>
+Touch Events<br>
+Contributing<br>
+License<br>
 
 Installation
 
