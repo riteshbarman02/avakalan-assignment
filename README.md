@@ -15,8 +15,6 @@ Installation
 To run the project locally:
 
 Clone the repository:
-
-bash
 git clone  https://github.com/riteshbarman02/avakalan-assignment
 Open the 2_main_code file in your editor.
 
