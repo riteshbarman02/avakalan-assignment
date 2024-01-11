@@ -17,7 +17,7 @@ To run the project locally:
 
 Clone the repository:
 
-git clone  https://github.com/riteshbarman02/avakalan-assignment
+git clone  https://github.com/riteshbarman02/avakalan-assignment<br>
 Open the 2_main_code file in your editor.
 
 Usage
