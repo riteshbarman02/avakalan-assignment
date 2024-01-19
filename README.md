@@ -22,7 +22,7 @@ To run the project locally:
 
 2. Open the `2_main_code` file in your code editor i.e. vs code.
 
-3. Open the file `index.html` and `main.js` inside  `2_main_code` and srat editing.
+3. Open the file `index.html` and `main.js` inside  `2_main_code` and start editing.
 
 ## Usage
 
