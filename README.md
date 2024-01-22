@@ -20,9 +20,17 @@ To run the project locally:
     git clone https://github.com/riteshbarman02/avakalan-assignment
     ```
 
-2. Open the `2_main_code` file in your code editor i.e. vs code.
+2. Open your folder on vs code .
 
-3. Open the file `index.html` and `main.js` inside  `2_main_code` and start editing.
+3. in the left mmost corner click on 5th icon .
+
+4. install an extention named live server.
+
+5. open `2_main_code` folder .
+
+6. open index.html and open the file with live server.
+
+7. now your file has been opened in your browser.
 
 ## Usage
 
